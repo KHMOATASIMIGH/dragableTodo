@@ -1,0 +1,3 @@
+1. https://dev.to/lensco825/making-a-simple-drag-and-drop-with-js-29l2
+
+2. https://www.geeksforgeeks.org/javascript-drag-and-drop-event-error-catching/
