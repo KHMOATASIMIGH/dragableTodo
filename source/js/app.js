@@ -17,12 +17,16 @@ function hideAddTodoModal() {
 }
 function addTodo() {
   let todoContent = todoInput.value;
-  todoSection.insertAdjacentHTML(
-    "beforeend",
-    `<article id="todo-${idGen}" class="todo" draggable="true">
-          <p>${todoContent}</p>
-        </article>`)
-  hideAddTodoModal();
+  if (todoContent === "") {
+    hideAddTodoModal()
+  }else{
+    todoSection.insertAdjacentHTML(
+      "beforeend",
+      `<article id="todo-${idGen}" class="todo" draggable="true">
+            <p>${todoContent}</p>
+          </article>`)
+    hideAddTodoModal();
+  }
 }
 function dragStartHandler(event) {
   event.dataTransfer.setData("elementId", event.target.id);
@@ -34,7 +38,7 @@ function dropHandler(event) {
   let elementId = event.dataTransfer.getData("elementId", event.target.id);
   let elementTarget = document.querySelector(`#${elementId}`);
   event.target.append(elementTarget)
-
+}
 openModalBtn.addEventListener("click", showAddTodoModal);
 createTodoBtn.addEventListener("click", addTodo);
 modalCloseBtn.addEventListener("click", hideAddTodoModal);
@@ -51,5 +55,3 @@ todoSection.addEventListener("drop", dropHandler);
 doingSection.addEventListener("drop", dropHandler);
 completeSection.addEventListener("drop", dropHandler);
 spanSection.addEventListener("drop", dropHandler);
-
-
